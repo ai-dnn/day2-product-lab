@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-11",
+  "provider": "groq",
+  "endpoint": "https://api.groq.com/openai/v1/models",
+  "credential_source": "user-provided image, extracted locally with Windows OCR",
+  "attempts": [
+    {"image_scale": 1, "http_status": 401, "authenticated": false},
+    {"image_scale": 2, "http_status": 401, "authenticated": false}
+  ],
+  "inference_requests_sent": 0,
+  "note": "Authentication rejected the OCR-extracted value. This does not distinguish an invalid credential from an OCR transcription error. No secret recorded."
+}
