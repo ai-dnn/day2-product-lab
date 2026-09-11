@@ -1,55 +1,93 @@
 # 01 — Problem Scan & Quick Problem Cards
 
-## Phase 1: SCAN
+**Học viên:** Le Nguyen Quoc Bao  
+**Vai trò giả định:** AI Product Engineer, Vin Smart Future  
+**Phạm vi được chọn:** Xanh SM Incident Router
 
-Các ý tưởng dưới đây được tham khảo từ bảng pain point đã cung cấp. Mình ưu tiên
-các tác vụ có dữ liệu đầu vào là free-text, có handoff rõ và có thể đo được thời
-gian xử lý.
+> Các con số trong tài liệu là baseline giả định phục vụ scoping trong lab, không
+> phải số liệu vận hành chính thức. Trước khi triển khai cần kiểm chứng bằng
+> ticket, telemetry và phỏng vấn stakeholder.
 
-| # | Công ty | Lens | Bài toán vận hành | Cơ hội AI |
-|---|---|---|---|---|
-| 1 | Vinhomes | Time-consuming + AI-upgrade | CSKH đọc ticket cư dân, xác định loại vấn đề, ưu tiên, bộ phận xử lý và soạn phản hồi. | Phân loại ticket, trích xuất thông tin, đề xuất route, draft phản hồi. |
-| 2 | VinFast | Repetitive + Time-consuming | Nhân viên đọc mô tả lỗi xe tự do, xác định nhóm lỗi và thông tin còn thiếu. | Chuẩn hóa mô tả, phân loại lỗi, hỏi bổ sung thông tin. |
-| 3 | Xanh SM | Stakeholder Pain + Time-consuming | Báo cáo sự cố từ tài xế là free-text, CS/Ops phải đọc và chuyển đúng team. | Chuẩn hóa incident report, gợi ý severity và routing. |
-| 4 | Vinpearl | AI-upgrade | Tin nhắn về booking, hoàn/hủy, giờ hoạt động và dịch vụ được diễn đạt không thống nhất. | Intent classification và draft trả lời theo policy. |
-| 5 | Vinhomes | Repetitive | Yêu cầu sửa chữa có thể bị trùng hoặc sai category. | Phát hiện duplicate và phân loại plumbing/electric/elevator. |
+## Phase 1 — SCAN
 
+Mục tiêu của bước scan là tìm các quy trình có đầu vào không cấu trúc, có thao
+tác lặp lại hoặc tốn thời gian, có điểm chuyển giao rõ và có thể đo được kết quả.
+Các cơ hội dưới đây được giữ ở mức scoping; chưa giả định rằng AI được phép tự
+thực hiện hành động vận hành.
 
-## Lựa chọn để deep-dive
+| # | Công ty | Lens | Bài toán vận hành quan sát được | Actor chịu ảnh hưởng | Dữ liệu cần xác minh | Cơ hội AI |
+|---|---|---|---|---|---|---|
+| 1 | Xanh SM | Stakeholder pain + time-consuming | Khi tài xế báo sự cố bằng free-text, CS/Ops phải đọc, hỏi lại thông tin thiếu, gán mức độ và chuyển đúng team. | Tài xế, CS/Ops, điều phối viên, hành khách | Incident text, pin, GPS, mã xe, lịch sử case, nhãn severity/team | Chuẩn hóa incident, trích xuất field, gợi ý severity và routing có người duyệt. |
+| 2 | VinFast | Repetitive + time-consuming | Nhân viên đọc mô tả lỗi xe không đồng nhất, xác định nhóm lỗi và hỏi lại triệu chứng còn thiếu. | Nhân viên tiếp nhận, kỹ thuật viên, chủ xe | Nội dung ticket, mã lỗi, model xe, lịch sử sửa chữa, nhãn kỹ thuật | Chuẩn hóa symptom, phân loại ticket và tạo câu hỏi intake; không tự chẩn đoán. |
+| 3 | Vinhomes | Repetitive + AI-upgrade | CSKH đọc phản ánh cư dân, xác định category, mức khẩn cấp, bộ phận xử lý và soạn phản hồi ban đầu. | CSKH, ban quản lý, cư dân | Ticket đa kênh, tòa/căn hộ, SLA, category, lịch sử phản hồi | Phân loại, trích xuất thông tin, phát hiện mức khẩn cấp và draft phản hồi. |
+| 4 | Vinpearl | Time-consuming | Yêu cầu đổi/hủy vé, booking hoặc hỏi dịch vụ phải tra nhiều chính sách trong mùa cao điểm. | CSKH, khách du lịch, quản lý dịch vụ | Booking, loại vé, chính sách hiệu lực, lịch sử hội thoại | Nhận diện intent, tra policy và tạo draft; trường hợp ngoại lệ cần escalation. |
+| 5 | Xanh SM | Repetitive + AI-upgrade | Điều phối xe đến điểm đón phải cân nhắc ETA, pin, ùn tắc và nhu cầu theo khu vực. | Điều phối viên, tài xế, khách hàng | GPS, ETA, pin, traffic, nhu cầu lịch sử, log phân bổ | Dự báo/ranking ứng viên và cảnh báo xe không đủ pin; quyết định cuối vẫn theo rule/operator. |
 
-Chọn **#3 — Chuẩn hóa báo cáo sự cố tài xế Xanh SM**. Đây là bài toán có pain trực
-tiếp từ stakeholder, dữ liệu free-text phù hợp với LLM feature, nhưng hành động
-cuối cùng vẫn cần điều phối viên phê duyệt. Prototype tập trung vào nhánh sự cố
-pin thấp để kiểm tra operational boundary.
+### Tiêu chí sàng lọc
 
-## Phase 2: QUICK PROBLEM CARDS
+- **Giá trị vận hành:** Có thể giảm thời gian triage hoặc giảm chuyển sai team.
+- **Khả năng làm prototype:** Có thể mô phỏng bằng text input, field extraction và rule.
+- **Rủi ro:** Có thể kiểm soát bằng safety gate, thiếu dữ liệu và human-in-the-loop.
+- **Khả năng đo:** Có baseline thời gian, routing accuracy và tỷ lệ escalation.
 
-### Card #1 — Xanh SM Incident Router
+## So sánh và lựa chọn
 
-- **Bài toán:** Tài xế gửi báo cáo sự cố bằng ngôn ngữ tự do, khiến CS/Ops mất thời gian đọc, chuẩn hóa và chuyển đúng team.
-- **Actor:** Tài xế, nhân viên CS và điều phối viên vận hành.
-- **Workflow:** Nhận tin nhắn → đọc và hiểu sự cố → hỏi thông tin thiếu → gán severity/team → chuyển case.
-- **Bottleneck:** Đọc và chuẩn hóa free-text, khoảng 8–12 phút/lượt.
-- **AI step:** Extract trường dữ liệu, phân loại incident, gợi ý severity và routing.
-- **Metric:** 90% case được chuẩn hóa trong dưới 30 giây; giảm thời gian triage trung bình từ 10 xuống dưới 3 phút.
-- **Architecture:** LLM feature + rule-based safety gate + HITL.
+Chấm theo thang 1–5, trong đó 5 là mức thuận lợi/giá trị cao hơn.
 
-### Card #2 — VinFast Service Description Assistant
+| Tiêu chí | Xanh SM Incident Router | VinFast Service Assistant | Vinhomes Ticket Assistant |
+|---|---:|---:|---:|
+| Giá trị vận hành | 5 | 4 | 4 |
+| Dữ liệu có khả năng sẵn có | 4 | 4 | 3 |
+| Scope prototype trong lab | 5 | 4 | 4 |
+| Rủi ro kiểm soát bằng rule/HITL | 4 | 3 | 3 |
+| Khả năng đo metric | 5 | 4 | 4 |
+| **Tổng** | **23** | **19** | **18** |
 
-- **Bài toán:** Mô tả lỗi xe bằng tiếng Việt không đồng nhất, khiến nhân viên service phải hỏi lại nhiều lần.
-- **Actor:** Nhân viên tiếp nhận và kỹ thuật viên service.
-- **Workflow:** Nhận mô tả → đọc triệu chứng → xác định nhóm lỗi → hỏi thông tin thiếu → chuyển xưởng.
-- **Bottleneck:** Xác định nhóm lỗi và thông tin thiếu, khoảng 6–10 phút/lượt.
-- **AI step:** Chuẩn hóa symptom, extract component và sinh câu hỏi bổ sung.
-- **Metric:** 85% case có đủ trường cần thiết sau một lượt hỏi; giảm thời gian intake xuống dưới 3 phút.
-- **Architecture:** LLM feature, không tự chẩn đoán hay chỉ dẫn sửa chữa.
+### Lựa chọn để deep-dive
 
-### Card #3 — Vinhomes Resident Ticket Assistant
+Chọn **Xanh SM Incident Router — chuẩn hóa báo cáo sự cố tài xế**. Bài toán có
+pain trực tiếp từ stakeholder, đầu vào free-text phù hợp với LLM feature và có
+handoff rõ giữa tài xế, CS/Ops và điều phối viên. Prototype tập trung vào nhánh
+xe có pin dưới 5% để kiểm tra boundary: không hướng xe đến trạm quá 5 km,
+không tự gửi tin hoặc tự dispatch, và luôn giữ `[DRAFT_ONLY]` cho người duyệt.
 
-- **Bài toán:** Ticket cư dân cần được phân loại, ưu tiên, route và draft phản hồi.
-- **Actor:** CSKH và ban quản lý tòa nhà.
-- **Workflow:** Nhận ticket → đọc nội dung → tìm category → route → soạn phản hồi → duyệt và gửi.
-- **Bottleneck:** Đọc ticket và soạn phản hồi, khoảng 10–15 phút/lượt.
-- **AI step:** Extract căn hộ/vấn đề, gợi ý priority/team và draft theo policy.
-- **Metric:** 90% ticket được route đúng; giảm thời gian draft từ 10 xuống dưới 2 phút.
-- **Architecture:** LLM feature + policy retrieval + HITL; tranh chấp phí/pháp lý luôn escalation.
+## Phase 2 — QUICK PROBLEM CARDS
+
+### Quick Problem Card 1 — Xanh SM Incident Router (được chọn)
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Bài toán** | Tài xế gửi báo cáo sự cố bằng ngôn ngữ tự do, khiến CS/Ops mất thời gian đọc, chuẩn hóa và chuyển đúng team. |
+| **Actor / operator** | Tài xế là người gửi; CS/Ops và điều phối viên là operator; hành khách có thể chịu tác động gián tiếp. |
+| **Workflow hiện tại** | Nhận tin nhắn → đọc và diễn giải → hỏi thông tin thiếu → gán severity/team → chuyển case và theo dõi. |
+| **Bottleneck** | Đọc free-text, phát hiện tín hiệu an toàn như pin/GPS và chuyển đúng team; baseline giả định 8–12 phút/case. |
+| **AI hỗ trợ** | Extract `incident_type`, `severity`, `vehicle_id`, `location`, `battery_percent`, `missing_information`; gợi ý action và routing. |
+| **Metric** | 90% case có JSON chuẩn hóa trong dưới 30 giây; giảm triage trung bình xuống dưới 3 phút; 100% case pin <5% không gợi ý trạm >5 km. |
+| **Quick architecture** | LLM feature + safety rule/state machine + human-in-the-loop; fallback về queue thủ công khi thiếu dữ liệu hoặc model lỗi. |
+| **Rủi ro / boundary** | Không bịa GPS, xe hoặc trạm; không gửi tin/dispatch trực tiếp; pin <5% phải đề xuất mobile charger và chuyển emergency operations. |
+
+### Quick Problem Card 2 — VinFast Service Description Assistant
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Bài toán** | Mô tả lỗi xe bằng tiếng Việt không đồng nhất khiến nhân viên service phải hỏi lại nhiều lần. |
+| **Actor / operator** | Nhân viên tiếp nhận là operator; kỹ thuật viên và chủ xe là các bên chịu tác động. |
+| **Workflow hiện tại** | Nhận mô tả → đọc triệu chứng → xác định nhóm lỗi → hỏi thông tin thiếu → chuyển xưởng. |
+| **Bottleneck** | Xác định component/triệu chứng và trường còn thiếu; baseline giả định 6–10 phút/case. |
+| **AI hỗ trợ** | Chuẩn hóa symptom, trích xuất component và sinh câu hỏi bổ sung theo template. |
+| **Metric** | 85% case có đủ trường intake sau một lượt hỏi; giảm thời gian tiếp nhận xuống dưới 3 phút. |
+| **Quick architecture** | LLM feature + schema validation + human review; không tự chẩn đoán hoặc hướng dẫn sửa chữa. |
+| **Rủi ro chính** | Model suy diễn nguyên nhân hỏng hoặc bỏ sót lỗi an toàn; mọi chẩn đoán vẫn thuộc kỹ thuật viên. |
+
+### Quick Problem Card 3 — Vinhomes Resident Ticket Assistant
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Bài toán** | Ticket cư dân cần được phân loại, ưu tiên, chuyển đúng bộ phận và soạn phản hồi ban đầu. |
+| **Actor / operator** | CSKH và ban quản lý là operator; cư dân là người gửi và nhận phản hồi. |
+| **Workflow hiện tại** | Nhận ticket → đọc nội dung → xác định category/priority → route → soạn phản hồi → duyệt và gửi. |
+| **Bottleneck** | Đọc ticket đa kênh và soạn phản hồi phù hợp; baseline giả định 10–15 phút/ticket. |
+| **AI hỗ trợ** | Trích xuất tòa/căn hộ/vấn đề, gợi ý priority/team và tạo draft theo policy hiện hành. |
+| **Metric** | 90% ticket được route đúng; giảm thời gian draft từ khoảng 10 phút xuống dưới 2 phút. |
+| **Quick architecture** | LLM feature + policy retrieval + human review; các case phí, pháp lý, an ninh hoặc khẩn cấp phải escalation. |
+| **Rủi ro chính** | Lộ dữ liệu cư dân, bỏ sót tình huống khẩn cấp hoặc gửi phản hồi ngoài policy. |
