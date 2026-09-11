@@ -1,0 +1,20 @@
+[SETUP] Bat dau cham diem Group Assignment tren GitHub Classroom
+============================================================
+[SECTION A] Kiem tra su ton tai cua 4 file deliverables (Max: 5.0d)
+
+[SECTION B] Cham diem ma nguon Prompt Prototype (Max: 5.0d)
+
+============================================================
+[REPORT] KET QUA CHAM DIEM TONG HOP CHO CA NHOM:
+[PASS] File ton tai: 01-problem-scan.md (Scan & Quick Cards) tai '.\01-problem-scan.md' (+1.25d)
+[PASS] File ton tai: 02-deep-dive-report.md (Deep-Dive Report) tai '.\02-deep-dive-report.md' (+1.25d)
+[PASS] File ton tai: 03-ai-log.md (AI Log & Reflection) tai '.\03-ai-log.md' (+1.25d)
+[PASS] File ton tai: 04-workflow-diagram (.png/.jpg/.pdf) tai '.\04-workflow-diagram.pdf' (+1.25d)
+[PASS] Code - Tieu chi 1: SYSTEM_PROMPT hop le va co chi thi ranh gioi. (+1.0d)
+[PASS] Code - Tieu chi 2: Ham evaluate_prompt() su dung Gemini SDK chinh xac. (+1.0d)
+[PASS] Code - Tieu chi 3: Da khai bao it nhat 2 Adversarial test cases hop le. (+1.0d)
+[FAIL] Code - Tieu chi 4: Script gap loi khi chay (Exit code 2). (0.0/1.0d)
+[WARN] Code - Tieu chi 5: Khong tim thay ket qua kiem thu tuong thich. (0.0/1.0d)
+============================================================
+[SCORE] TONG DIEM NHOM: 8.00 / 10.00
+[WARNING] Co file bi thieu hoac kiem thu code khong dat. Vui loi kiem tra lai log.

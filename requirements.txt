@@ -3,3 +3,4 @@
 google-genai
 google-generativeai
 pytest
+httpx>=0.28,<1.0
