@@ -4,10 +4,6 @@
 **Bài toán:** Xanh SM Incident Router  
 **Mục đích:** Ghi lại cách AI được dùng trong quá trình scoping và kiểm thử boundary
 
-> Các nhận định, số liệu và phương án do AI gợi ý được xem là giả thuyết để kiểm
-> chứng. Chúng không thay thế dữ liệu vận hành, policy nội bộ hoặc quyết định của
-> điều phối viên.
-
 ## 1. AI Đã Được Sử Dụng Như Thế Nào
 
 Tôi dùng AI như một thought-partner trong bốn bước:

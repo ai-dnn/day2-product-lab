@@ -4,10 +4,6 @@
 **Vai trò giả định:** AI Product Engineer, Vin Smart Future  
 **Phạm vi được chọn:** Xanh SM Incident Router
 
-> Các con số trong tài liệu là baseline giả định phục vụ scoping trong lab, không
-> phải số liệu vận hành chính thức. Trước khi triển khai cần kiểm chứng bằng
-> ticket, telemetry và phỏng vấn stakeholder.
-
 ## Phase 1 — SCAN
 
 Mục tiêu của bước scan là tìm các quy trình có đầu vào không cấu trúc, có thao
