@@ -1,53 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#e8f2ff"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
-    </filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 z" fill="#2563eb"/>
-    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eff6ff"/></linearGradient>
+    <linearGradient id="driver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#0d9488"/></linearGradient>
+    <linearGradient id="dispatcher" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#2563eb"/></marker>
+    <marker id="dataArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#64748b"/></marker>
     <style>
-      .title{font:700 42px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.sub{font:400 21px 'Segoe UI',Arial,sans-serif;fill:#475569}
-      .lane{font:700 25px 'Segoe UI',Arial,sans-serif;fill:#fff}.head{font:700 23px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
-      .body{font:400 18px 'Segoe UI',Arial,sans-serif;fill:#334155}.time{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#2563eb}
-      .note{font:700 18px 'Segoe UI',Arial,sans-serif}.small{font:400 16px 'Segoe UI',Arial,sans-serif;fill:#475569}
+      .title{font:700 40px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.subtitle{font:400 20px 'Segoe UI',Arial,sans-serif;fill:#475569}
+      .lane-title{font:700 22px 'Segoe UI',Arial,sans-serif;fill:#fff;letter-spacing:.4px}.lane-index{font:700 14px 'Segoe UI',Arial,sans-serif;fill:#bfdbfe;letter-spacing:1px}
+      .card-title{font:700 21px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.card-body{font:400 17px 'Segoe UI',Arial,sans-serif;fill:#475569}
+      .time{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#2563eb}.badge{font:700 14px 'Segoe UI',Arial,sans-serif;letter-spacing:.3px}
+      .data-title{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#334155}.data-body{font:400 15px 'Segoe UI',Arial,sans-serif;fill:#64748b}.footer{font:400 14px 'Segoe UI',Arial,sans-serif;fill:#64748b}
+      .flow{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .data-flow{fill:none;stroke:#64748b;stroke-width:2.5;stroke-dasharray:7 7;stroke-linecap:round;marker-end:url(#dataArrow)}
     </style>
   </defs>
   <rect width="1600" height="900" fill="url(#bg)"/>
-  <text x="70" y="72" class="title">Current-State Workflow — Xanh SM Critical Battery Incident</text>
-  <text x="70" y="110" class="sub">Baseline giả định: 11 phút/lượt • Cần xác minh bằng incident logs thực tế</text>
+  <text x="60" y="65" class="title">Current-State Workflow — Xanh SM Critical Battery Incident</text>
+  <text x="60" y="101" class="subtitle">Baseline giả định: 11 phút/lượt  •  Cần xác minh bằng incident logs thực tế</text>
 
-  <rect x="70" y="150" width="180" height="210" rx="22" fill="#0f766e"/>
-  <text x="160" y="242" text-anchor="middle" class="lane">TÀI XẾ</text><text x="160" y="278" text-anchor="middle" class="lane">XANH SM</text>
-  <rect x="70" y="390" width="180" height="300" rx="22" fill="#1d4ed8"/>
-  <text x="160" y="522" text-anchor="middle" class="lane">ĐIỀU PHỐI</text><text x="160" y="558" text-anchor="middle" class="lane">VIÊN</text>
-  <rect x="70" y="720" width="180" height="110" rx="22" fill="#475569"/>
-  <text x="160" y="785" text-anchor="middle" class="lane">HỆ THỐNG</text>
+  <rect x="55" y="140" width="1490" height="195" rx="24" fill="#fff" fill-opacity=".72" stroke="#ccfbf1" stroke-width="2"/>
+  <rect x="55" y="365" width="1490" height="275" rx="24" fill="#fff" fill-opacity=".82" stroke="#dbeafe" stroke-width="2"/>
+  <rect x="55" y="670" width="1490" height="150" rx="24" fill="#fff" fill-opacity=".72" stroke="#e2e8f0" stroke-width="2"/>
 
-  <g filter="url(#shadow)"><rect x="300" y="185" width="250" height="140" rx="18" fill="#fff" stroke="#99f6e4" stroke-width="3"/>
-    <text x="425" y="225" text-anchor="middle" class="head">1. Báo pin yếu</text><text x="425" y="260" text-anchor="middle" class="body">Gọi/chat điều phối</text><text x="425" y="296" text-anchor="middle" class="time">⏱ 1 phút</text></g>
-  <g filter="url(#shadow)"><rect x="615" y="430" width="260" height="150" rx="18" fill="#fff" stroke="#93c5fd" stroke-width="3"/>
-    <text x="745" y="470" text-anchor="middle" class="head">2. Xác minh</text><text x="745" y="505" text-anchor="middle" class="body">Biển số • pin • GPS</text><text x="745" y="545" text-anchor="middle" class="time">⏱ 2 phút</text></g>
-  <g filter="url(#shadow)"><rect x="930" y="415" width="285" height="180" rx="18" fill="#fff1f2" stroke="#ef4444" stroke-width="5"/>
-    <text x="1072" y="457" text-anchor="middle" class="head">3. Tra trạm sạc</text><text x="1072" y="493" text-anchor="middle" class="body">Đối chiếu nhiều màn hình</text><text x="1072" y="529" text-anchor="middle" class="time">⏱ 3 phút</text><text x="1072" y="566" text-anchor="middle" class="note" fill="#dc2626">🔴 BOTTLENECK</text></g>
-  <g filter="url(#shadow)"><rect x="1270" y="430" width="260" height="150" rx="18" fill="#fff" stroke="#93c5fd" stroke-width="3"/>
-    <text x="1400" y="470" text-anchor="middle" class="head">4. Chọn phương án</text><text x="1400" y="505" text-anchor="middle" class="body">Trạm sạc / cứu hộ</text><text x="1400" y="545" text-anchor="middle" class="time">⏱ 2 phút</text></g>
-  <g filter="url(#shadow)"><rect x="930" y="650" width="285" height="135" rx="18" fill="#fff" stroke="#93c5fd" stroke-width="3"/>
-    <text x="1072" y="692" text-anchor="middle" class="head">5. Soạn hướng dẫn</text><text x="1072" y="727" text-anchor="middle" class="body">và gửi tài xế</text><text x="1072" y="762" text-anchor="middle" class="time">⏱ 2 phút</text></g>
-  <g filter="url(#shadow)"><rect x="615" y="185" width="260" height="140" rx="18" fill="#fff" stroke="#99f6e4" stroke-width="3"/>
-    <text x="745" y="225" text-anchor="middle" class="head">6. Xác nhận</text><text x="745" y="260" text-anchor="middle" class="body">Thực hiện phương án</text><text x="745" y="296" text-anchor="middle" class="time">⏱ 1 phút</text></g>
+  <rect x="55" y="140" width="205" height="195" rx="24" fill="url(#driver)"/>
+  <text x="82" y="183" class="lane-index">SWIMLANE 01</text><text x="157" y="228" text-anchor="middle" class="lane-title">TÀI XẾ</text><text x="157" y="260" text-anchor="middle" class="lane-title">XANH SM</text><text x="157" y="296" text-anchor="middle" class="lane-index" fill="#ccfbf1">BÁO CÁO • XÁC NHẬN</text>
+  <rect x="55" y="365" width="205" height="275" rx="24" fill="url(#dispatcher)"/>
+  <text x="82" y="408" class="lane-index">SWIMLANE 02</text><text x="157" y="478" text-anchor="middle" class="lane-title">ĐIỀU PHỐI</text><text x="157" y="510" text-anchor="middle" class="lane-title">VIÊN</text><text x="157" y="557" text-anchor="middle" class="lane-index">XỬ LÝ SỰ CỐ</text>
+  <rect x="55" y="670" width="205" height="150" rx="24" fill="#475569"/>
+  <text x="82" y="713" class="lane-index" fill="#cbd5e1">SWIMLANE 03</text><text x="157" y="764" text-anchor="middle" class="lane-title">HỆ THỐNG</text><text x="157" y="793" text-anchor="middle" class="lane-index" fill="#e2e8f0">DATA SOURCES</text>
 
-  <path d="M550 255 C590 255 590 430 640 430" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M875 505 L920 505" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M1215 505 L1260 505" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M1400 580 C1400 690 1245 718 1225 718" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M930 718 C820 718 825 335 780 335" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)"><rect x="310" y="170" width="270" height="135" rx="17" fill="#fff" stroke="#5eead4" stroke-width="2.5"/><circle cx="344" cy="201" r="16" fill="#ccfbf1"/><text x="344" y="207" text-anchor="middle" class="badge" fill="#0f766e">1</text><text x="371" y="207" class="card-title">Báo pin yếu</text><text x="344" y="244" class="card-body">Gọi/chat cho điều phối</text><rect x="344" y="264" width="92" height="26" rx="13" fill="#ecfeff"/><text x="390" y="282" text-anchor="middle" class="time">⏱ 1 phút</text></g>
+  <g filter="url(#shadow)"><rect x="1220" y="170" width="280" height="135" rx="17" fill="#fff" stroke="#5eead4" stroke-width="2.5"/><circle cx="1254" cy="201" r="16" fill="#ccfbf1"/><text x="1254" y="207" text-anchor="middle" class="badge" fill="#0f766e">6</text><text x="1281" y="207" class="card-title">Xác nhận</text><text x="1254" y="244" class="card-body">Thực hiện phương án</text><rect x="1254" y="264" width="92" height="26" rx="13" fill="#ecfeff"/><text x="1300" y="282" text-anchor="middle" class="time">⏱ 1 phút</text></g>
 
-  <rect x="315" y="735" width="520" height="72" rx="14" fill="#eff6ff" stroke="#60a5fa" stroke-width="2"/>
-  <text x="335" y="766" class="note" fill="#1d4ed8">🔄 HANDOFFS</text><text x="335" y="792" class="small">Tài xế → điều phối → dashboard → tài xế</text>
-  <text x="1280" y="840" class="small">Tran Nguyen Tien Duc • Lab 02</text>
+  <g filter="url(#shadow)"><rect x="310" y="420" width="265" height="165" rx="17" fill="#fff" stroke="#93c5fd" stroke-width="2.5"/><circle cx="344" cy="453" r="16" fill="#dbeafe"/><text x="344" y="459" text-anchor="middle" class="badge" fill="#1d4ed8">2</text><text x="371" y="459" class="card-title">Xác minh</text><text x="344" y="500" class="card-body">Biển số • pin • GPS</text><rect x="344" y="530" width="92" height="26" rx="13" fill="#eff6ff"/><text x="390" y="548" text-anchor="middle" class="time">⏱ 2 phút</text></g>
+  <g filter="url(#shadow)"><rect x="615" y="405" width="265" height="195" rx="17" fill="#fff7f7" stroke="#ef4444" stroke-width="4"/><circle cx="649" cy="440" r="16" fill="#fee2e2"/><text x="649" y="446" text-anchor="middle" class="badge" fill="#dc2626">3</text><text x="676" y="446" class="card-title">Tra trạm sạc</text><text x="649" y="488" class="card-body">Đối chiếu nhiều màn hình</text><rect x="649" y="515" width="92" height="26" rx="13" fill="#eff6ff"/><text x="695" y="533" text-anchor="middle" class="time">⏱ 3 phút</text><rect x="649" y="553" width="137" height="28" rx="14" fill="#fee2e2"/><circle cx="666" cy="567" r="6" fill="#ef4444"/><text x="727" y="572" text-anchor="middle" class="badge" fill="#dc2626">BOTTLENECK</text></g>
+  <g filter="url(#shadow)"><rect x="920" y="420" width="265" height="165" rx="17" fill="#fff" stroke="#93c5fd" stroke-width="2.5"/><circle cx="954" cy="453" r="16" fill="#dbeafe"/><text x="954" y="459" text-anchor="middle" class="badge" fill="#1d4ed8">4</text><text x="981" y="459" class="card-title">Chọn phương án</text><text x="954" y="500" class="card-body">Trạm sạc / cứu hộ</text><rect x="954" y="530" width="92" height="26" rx="13" fill="#eff6ff"/><text x="1000" y="548" text-anchor="middle" class="time">⏱ 2 phút</text></g>
+  <g filter="url(#shadow)"><rect x="1225" y="420" width="275" height="165" rx="17" fill="#fff" stroke="#93c5fd" stroke-width="2.5"/><circle cx="1259" cy="453" r="16" fill="#dbeafe"/><text x="1259" y="459" text-anchor="middle" class="badge" fill="#1d4ed8">5</text><text x="1286" y="459" class="card-title">Soạn hướng dẫn</text><text x="1259" y="500" class="card-body">Gửi lại cho tài xế</text><rect x="1259" y="530" width="92" height="26" rx="13" fill="#eff6ff"/><text x="1305" y="548" text-anchor="middle" class="time">⏱ 2 phút</text></g>
+
+  <path class="flow" d="M445 305 L445 407"/><path class="flow" d="M575 503 L602 503"/><path class="flow" d="M880 503 L907 503"/><path class="flow" d="M1185 503 L1212 503"/><path class="flow" d="M1360 420 L1360 318"/>
+  <rect x="462" y="345" width="115" height="28" rx="14" fill="#dbeafe"/><text x="519" y="364" text-anchor="middle" class="badge" fill="#1d4ed8">↳ HANDOFF</text>
+  <rect x="1375" y="345" width="115" height="28" rx="14" fill="#dbeafe"/><text x="1432" y="364" text-anchor="middle" class="badge" fill="#1d4ed8">↳ HANDOFF</text>
+
+  <g filter="url(#shadow)"><rect x="345" y="700" width="1115" height="88" rx="17" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><circle cx="385" cy="735" r="18" fill="#e2e8f0"/><text x="385" y="741" text-anchor="middle" class="data-title">DB</text><text x="420" y="733" class="data-title">Fleet Dashboard &amp; Data Sources</text><text x="420" y="761" class="data-body">Telemetry pin/GPS  •  bản đồ &amp; khoảng cách  •  trạng thái trạm sạc  •  kênh liên lạc nội bộ</text></g>
+  <path class="data-flow" d="M500 700 C500 660 445 650 445 598"/><path class="data-flow" d="M745 700 L745 613"/>
+  <text x="60" y="865" class="footer">Legend: đường liền = process flow  •  đường đứt = data lookup  •  viền đỏ = bottleneck</text><text x="1540" y="865" text-anchor="end" class="footer">Tran Nguyen Tien Duc • Lab 02</text>
 </svg>
-
