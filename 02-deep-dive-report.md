@@ -73,3 +73,4 @@ AI không được phép:
 3. [ YES ] Stakeholders sẵn sàng thay đổi quy trình làm việc cũ?
 
 ## Quyết định cuối cùng
+NO-GO
