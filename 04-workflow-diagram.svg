@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="950" viewBox="0 0 1800 950">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#344054"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#101828" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1800" height="950" fill="#F8FAFC"/>
+  <text x="80" y="82" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#101828">
+    VinWonders lost-and-found — current-state workflow
+  </text>
+  <text x="80" y="125" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#475467">
+    Scenario baseline for the lab; durations require validation with guest-services staff
+  </text>
+
+  <line x1="370" y1="356" x2="415" y2="356" stroke="#344054" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="710" y1="356" x2="755" y2="356" stroke="#344054" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1050" y1="356" x2="1095" y2="356" stroke="#344054" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1390" y1="356" x2="1435" y2="356" stroke="#344054" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="392" y="165" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#475467">CASE</text>
+  <text x="732" y="165" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#475467">HANDOFF</text>
+  <text x="1072" y="165" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#475467">CHECK</text>
+  <text x="1412" y="165" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#475467">AUTHORIZATION</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="210" width="290" height="295" rx="18" fill="#FFFFFF" stroke="#98A2B3" stroke-width="2"/>
+    <rect x="80" y="210" width="290" height="58" rx="18" fill="#175CD3"/>
+    <rect x="80" y="244" width="290" height="24" fill="#175CD3"/>
+    <text x="105" y="249" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">1 · Receive report</text>
+    <text x="105" y="306" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#101828">Guest services</text>
+    <text x="105" y="348" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Receive counter, hotline</text>
+    <text x="105" y="377" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">or form submission</text>
+    <text x="105" y="406" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Create lost-item case ID</text>
+    <text x="105" y="466" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#175CD3">3 min</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="420" y="210" width="290" height="295" rx="18" fill="#FFFFFF" stroke="#98A2B3" stroke-width="2"/>
+    <rect x="420" y="210" width="290" height="58" rx="18" fill="#175CD3"/>
+    <rect x="420" y="244" width="290" height="24" fill="#175CD3"/>
+    <text x="445" y="249" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">2 · Clarify details</text>
+    <text x="445" y="306" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#101828">Guest services</text>
+    <text x="445" y="348" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Ask item attributes</text>
+    <text x="445" y="377" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Capture time and last</text>
+    <text x="445" y="406" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">known location</text>
+    <text x="445" y="466" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#175CD3">4 min</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="760" y="180" width="290" height="355" rx="18" fill="#FFF1F0" stroke="#D92D20" stroke-width="4"/>
+    <rect x="760" y="180" width="290" height="62" rx="18" fill="#B42318"/>
+    <rect x="760" y="218" width="290" height="24" fill="#B42318"/>
+    <text x="785" y="221" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">3 · Search records</text>
+    <text x="785" y="282" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#101828">L&amp;F coordinator</text>
+    <text x="785" y="324" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Search registers from</text>
+    <text x="785" y="353" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">multiple park areas</text>
+    <text x="785" y="382" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Compare free-text details</text>
+    <text x="785" y="424" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#B42318">BOTTLENECK</text>
+    <text x="785" y="494" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#B42318">12 min</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1100" y="180" width="290" height="355" rx="18" fill="#FFF1F0" stroke="#D92D20" stroke-width="4"/>
+    <rect x="1100" y="180" width="290" height="62" rx="18" fill="#B42318"/>
+    <rect x="1100" y="218" width="290" height="24" fill="#B42318"/>
+    <text x="1125" y="221" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">4 · Verify candidate</text>
+    <text x="1125" y="282" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#101828">Coordinator + location</text>
+    <text x="1125" y="324" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Call the custody point</text>
+    <text x="1125" y="353" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Check the physical item</text>
+    <text x="1125" y="382" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Compare visible attributes</text>
+    <text x="1125" y="424" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#B42318">BOTTLENECK</text>
+    <text x="1125" y="494" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#B42318">5 min</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1440" y="210" width="290" height="295" rx="18" fill="#FFFFFF" stroke="#98A2B3" stroke-width="2"/>
+    <rect x="1440" y="210" width="290" height="58" rx="18" fill="#175CD3"/>
+    <rect x="1440" y="244" width="290" height="24" fill="#175CD3"/>
+    <text x="1465" y="249" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">5 · Verify and return</text>
+    <text x="1465" y="306" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#101828">Authorized staff</text>
+    <text x="1465" y="348" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Verify ownership</text>
+    <text x="1465" y="377" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Record chain of custody</text>
+    <text x="1465" y="406" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#344054">Return item and close case</text>
+    <text x="1465" y="466" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#175CD3">4 min</text>
+  </g>
+
+  <rect x="80" y="610" width="1650" height="150" rx="18" fill="#EAF2FF"/>
+  <text x="115" y="665" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#101828">Measured relationship in the scenario</text>
+  <text x="115" y="712" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#344054">
+    Total cycle time: 28 min/case · Bottleneck work: 17 min/case · Assumed volume: 30 cases/day
+  </text>
+  <text x="115" y="808" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#475467">
+    Red steps identify manual matching work. All durations are lab assumptions pending operator validation.
+  </text>
+  <rect x="1340" y="790" width="28" height="28" rx="4" fill="#FFF1F0" stroke="#D92D20" stroke-width="3"/>
+  <text x="1382" y="811" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#344054">Bottleneck</text>
+  <line x1="1510" y1="804" x2="1560" y2="804" stroke="#344054" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1580" y="811" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#344054">Handoff</text>
+</svg>
